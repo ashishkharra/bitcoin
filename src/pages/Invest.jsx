@@ -68,7 +68,7 @@ const Invest = () => {
     : cardsData.filter(card => card.vipLevel === activeSubTab);
 
   return (
-    <div className="px-4 py-6 mt-16">
+    <div className="px-4 py-6 my-12">
       {/* Main Tabs */}
       <div className="flex justify-center gap-4 mb-6 pb-2 border-b">
         {tabList.map((tab) => (

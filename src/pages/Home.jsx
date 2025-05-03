@@ -83,7 +83,7 @@ const Home = () => {
     return (
         <div className="space-y-12 px-4 sm:px-6 lg:px-8">
             {/* Hero Slider */}
-            <div className="relative w-full mt-20 h-64 md:h-96 overflow-hidden rounded-3xl shadow-2xl">
+            <div className="relative w-full mt-20 h-48 md:h-96 overflow-hidden rounded-3xl shadow-2xl">
                 <AnimatePresence custom={direction} initial={false}>
                     <motion.div
                         key={currentSlide}
