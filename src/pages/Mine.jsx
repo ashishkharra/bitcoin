@@ -1,5 +1,6 @@
 import React from 'react'
 import { IoSettingsOutline } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 const Mine = () => {
     const tools = [
@@ -9,12 +10,12 @@ const Mine = () => {
         { name: "Wallet Withdrawal", color: "text-green-400", icon: "withdrawal" },
         { name: "My Team", color: "text-blue-400", icon: "team" },
         { name: "Points Record", color: "text-red-400", icon: "points" },
-        { name: "Auth Center", color: "text-orange-400", icon: "auth" },
+        { name: "Auth Center", color: "text-yellow-400", icon: "auth" },
         { name: "My Messages", color: "text-teal-400", icon: "messages" },
         { name: "My Rewards", color: "text-red-400", icon: "rewards" },
         { name: "Member Center", color: "text-teal-400", icon: "member" },
-        { name: "FAQ", color: "text-orange-400", icon: "faq" },
-        { name: "Sign-In Reward", color: "text-orange-400", icon: "signin" },
+        { name: "FAQ", color: "text-yellow-400", icon: "faq" },
+        { name: "Sign-In Reward", color: "text-yellow-400", icon: "signin" },
     ];
 
     const icons = {
@@ -87,14 +88,14 @@ const Mine = () => {
             <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50 flex justify-between items-center px-4">
                 <div className="flex justify-between items-center px-4 gap-2">
                     <img src="/assets/images/en.png" alt="" className='rounded-full w-16' />
-                    <button className="font-medium px-4 py-2 rounded-md bg-orange-600 cursor-pointer">Go to login</button>
+                    <Link to='/login' className="font-medium px-4 py-2 rounded-md bg-yellow-600 cursor-pointer">Go to login</Link>
                 </div>
                 <IoSettingsOutline size={24} />
 
             </div>
 
             <div className="bg-white rounded-lg shadow-md w-full max-w-4xl mx-auto p-6 mt-40">
-                <div className="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0">
+                <div className="flex md:flex-row justify-between items-center space-y-8 md:space-y-0">
 
                     {/* My Investments */}
                     <div className="flex flex-col items-center">
@@ -139,8 +140,8 @@ const Mine = () => {
                     </div>
 
                     {/* Online Service */}
-                    <div className="flex flex-col items-center">
-                        <div className="w-12 h-12 mb-3">
+                    <div className="flex flex-col items-center pt-[-10px]">
+                        <div className="w-12 h-12 mb-3 flex items-center justify-center">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"

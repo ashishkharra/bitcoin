@@ -16,62 +16,62 @@ const Header = () => {
             {/* Top Section - Desktop */}
             <div className="hidden md:flex justify-between items-center px-10 py-4 max-w-7xl mx-auto">
                 <div>
-                    <img src="/assets/images/logo.png" alt="" className="w-36" />
+                    <img src="/assets/images/logo (2).png" alt="" className="w-28 mt-[-10px]" />
                 </div>
 
                 <nav className="hidden md:flex gap-8">
                     <Link
                         to="/"
                         className={`flex flex-col items-center ${isActive("/") ? "text-blue-600" : "text-gray-600"
-                            } hover:text-orange-500 transition`}
+                            } hover:text-yellow-500 transition`}
                     >
                         <span className="font-medium">Home</span>
                         {isActive("/") && (
-                            <div className="w-4 h-1 bg-orange-500 rounded-full mt-1"></div>
+                            <div className="w-4 h-1 bg-yellow-500 rounded-full mt-1"></div>
                         )}
                     </Link>
 
                     <Link
                         to="/investments"
                         className={`flex flex-col items-center ${isActive("/investments") ? "text-blue-600" : "text-gray-600"
-                            } hover:text-orange-500 transition`}
+                            } hover:text-yellow-500 transition`}
                     >
                         <span className="font-medium">Invest</span>
                         {isActive("/investments") && (
-                            <div className="w-4 h-1 bg-orange-500 rounded-full mt-1"></div>
+                            <div className="w-4 h-1 bg-yellow-500 rounded-full mt-1"></div>
                         )}
                     </Link>
 
                     <Link
                         to="/contract"
                         className={`flex flex-col items-center ${isActive("/investments") ? "text-blue-600" : "text-gray-600"
-                            } hover:text-orange-500 transition`}
+                            } hover:text-yellow-500 transition`}
                     >
                         <span className="font-medium">Contract</span>
                         {isActive("/contract") && (
-                            <div className="w-4 h-1 bg-orange-500 rounded-full mt-1"></div>
+                            <div className="w-4 h-1 bg-yellow-500 rounded-full mt-1"></div>
                         )}
                     </Link>
 
                     <Link
                         to="/vip"
                         className={`flex flex-col items-center ${isActive("/investments") ? "text-blue-600" : "text-gray-600"
-                            } hover:text-orange-500 transition`}
+                            } hover:text-yellow-500 transition`}
                     >
                         <span className="font-medium">VIP</span>
                         {isActive("/vip") && (
-                            <div className="w-4 h-1 bg-orange-500 rounded-full mt-1"></div>
+                            <div className="w-4 h-1 bg-yellow-500 rounded-full mt-1"></div>
                         )}
                     </Link>
 
                     <Link
                         to="/me"
                         className={`flex flex-col items-center ${isActive("/investments") ? "text-blue-600" : "text-gray-600"
-                            } hover:text-orange-500 transition`}
+                            } hover:text-yellow-500 transition`}
                     >
                         <span className="font-medium">Mine</span>
                         {isActive("/me") && (
-                            <div className="w-4 h-1 bg-orange-500 rounded-full mt-1"></div>
+                            <div className="w-4 h-1 bg-yellow-500 rounded-full mt-1"></div>
                         )}
                     </Link>
                 </nav>
@@ -95,13 +95,8 @@ const Header = () => {
 
             {/* Mobile Header */}
             <div className="md:hidden flex justify-between items-center p-4">
-                <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                        D
-                    </div>
-                    <span className="text-xl font-bold">
-                        Digi<span className="text-orange-500">Tifa</span>
-                    </span>
+                <div>
+                    <img src="/assets/images/logo (2).png" alt="" className="w-28 mt-[-10px]" />
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -137,7 +132,7 @@ const Header = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                             </svg>
                             Home
-                            <div className="ml-auto w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <div className="ml-auto w-2 h-2 bg-yellow-500 rounded-full"></div>
                         </Link>
                         <Link to="/investments" className="py-3 px-4 flex items-center text-gray-600 border-b border-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -170,7 +165,7 @@ const Header = () => {
                             <img src="/assets/images/en.png" alt="" className="w-8 mr-2" />
                             English
                         </button>
-                        <button className="text-orange-500 font-medium">Log In</button>
+                        <button className="text-yellow-500 font-medium">Log In</button>
                     </div>
                 </div>
             )}

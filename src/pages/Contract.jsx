@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+
+// Register the necessary chart components
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const timeframes = ["1min", "5min", "15min", "30min", "60min", "4hour", "1day"];
 const indicators = ["VOL", "MACD", "KDJ", "RSI", "DMI", "OBV", "BOLL", "SAR", "DMA", "TRIX", "BRAR", "VR", "EMV", "WR", "ROC", "MTM", "PSY"];
@@ -7,6 +12,31 @@ export default function Contract() {
     const [activeTimeframe, setActiveTimeframe] = useState("1min");
     const [activeTab, setActiveTab] = useState('In Progress');
     const [orders, setOrders] = useState([]);
+
+    // Sample data for the chart
+    const data = {
+        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],  // Example time intervals
+        datasets: [
+            {
+                label: 'Price',
+                data: [30, 35, 40, 38, 37, 43, 45, 50, 52, 48],  // Example price data
+                fill: false,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                tension: 0.1,
+            },
+        ],
+    };
+
+    // Chart options
+    const options = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Price Chart',
+            },
+        },
+    };
 
     return (
         <div className="w-full p-4 text-sm font-medium my-16">
@@ -40,7 +70,7 @@ export default function Contract() {
 
             {/* Chart Placeholder */}
             <div className="bg-gray-100 h-48 flex items-center justify-center text-gray-500 mb-2 rounded">
-                Chart Placeholder
+                <Line data={data} options={options} className="w-full h-full"/>
             </div>
 
             {/* Indicators */}
@@ -82,13 +112,6 @@ export default function Contract() {
                     {orders.length > 0 ? (
                         <div className="w-full">
                             {/* Render orders here if they exist */}
-                            {/* Example order item:
-            {orders.map(order => (
-              <div key={order.id} className="border-b py-4">
-                Order #{order.id}
-              </div>
-            ))}
-            */}
                         </div>
                     ) : (
                         <div className="text-center text-gray-500">

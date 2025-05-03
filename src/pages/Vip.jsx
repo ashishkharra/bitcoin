@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Vip = () => {
     const [paymentPassword, setPaymentPassword] = useState('');
@@ -8,21 +9,21 @@ const Vip = () => {
     return (
         <div className="w-full py-4 bg-white rounded-lg shadow-sm">
             {/* Header */}
-            <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50">
+            <div className="text-center mt-[63px] bg-blue-600 text-white py-4 top-0 fixed w-full z-50">
                 <h1 className="text-2xl font-bold mb-2">Activate VIP</h1>
-                <button className="font-medium px-4 py-2 rounded-md bg-orange-600 cursor-pointer">Go to login</button>
+                <Link to='/login' className="font-medium px-4 py-2 rounded-md bg-yellow-600 cursor-pointer">Go to login</Link>
             </div>
 
             {/* Current Limits */}
-            <div className="mb-8 mt-36">
-                <div className="flex justify-between items-center mb-4">
+            <div className="mb-8 mt-40">
+                <div className="flex justify-between items-center mb-4 border border-gray-200 rounded-2xl py-5">
                     <div className="text-center w-1/2">
-                        <p className="text-3xl font-bold">0</p>
-                        <p className="text-gray-600">Daily transfer limit</p>
+                        <p className="text-2xl sm:text-3xl font-bold">0</p>
+                        <p className="text-gray-600 text-[12px] sm:text-base">Daily transfer limit</p>
                     </div>
                     <div className="text-center w-1/2">
-                        <p className="text-3xl font-bold">0</p>
-                        <p className="text-gray-600">Monthly transfer limit</p>
+                        <p className="text-2xl sm:text-3xl font-bold">0</p>
+                        <p className="text-gray-600 text-[12px] sm:text-base">Monthly transfer limit</p>
                     </div>
                 </div>
                 <div className="border-t border-gray-200 my-4"></div>
@@ -32,9 +33,7 @@ const Vip = () => {
             <div className='px-4 z-0'>
                 <h2 className="text-xl font-semibold mb-4">VIP package</h2>
 
-                {/* Grid Container */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {/* VIP Cards */}
                     {[
                         { bg: 'vip1-bg.png', title: 'V1', daily: 10, monthly: 30, price: '$50.00' },
                         { bg: 'vip2-bg.png', title: 'V2', daily: 20, monthly: 60, price: '$100.00' },
@@ -47,35 +46,29 @@ const Vip = () => {
                     ].map((pkg, index) => (
                         <div
                             key={index}
-                            className="relative border border-gray-200 rounded-lg overflow-hidden w-full h-64"
+                            className="relative border border-gray-200 rounded-lg overflow-hidden w-full h-fit"
                         >
                             <img
                                 src={`/assets/images/${pkg.bg}`}
                                 alt={pkg.title}
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-black/40 p-4 flex flex-col justify-between text-white">
-                                <div className='mt-32'>
-                                    <div className="space-y-1 mb-3 text-sm">
-                                        <p>
-                                            Daily transfer limit:{' '}
-                                            <span className="font-medium">{pkg.daily}</span>
-                                        </p>
-                                        <p>
-                                            Monthly transfer limit:{' '}
-                                            <span className="font-medium">{pkg.monthly}</span>
-                                        </p>
-                                        <p>
-                                            Valid date:{' '}
-                                            <span className="font-medium">60</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <button className="text-blue-200 font-medium underline">
-                                        View details
-                                    </button>
-                                    <p className="font-bold">{pkg.price}</p>
+
+                            {/* Text Overlay Positioned at the Bottom */}
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-4">
+                                <div className="text-sm sm:text-base space-y-1">
+                                    <p>
+                                        Daily transfer limit:{' '}
+                                        <span className="font-medium">{pkg.daily}</span>
+                                    </p>
+                                    <p>
+                                        Monthly transfer limit:{' '}
+                                        <span className="font-medium">{pkg.monthly}</span>
+                                    </p>
+                                    <p>
+                                        Valid date:{' '}
+                                        <span className="font-medium">60</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>

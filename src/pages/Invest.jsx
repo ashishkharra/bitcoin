@@ -28,16 +28,16 @@ const InvestmentCard = ({ vipLevel, parts, amount, progress }) => {
       whileHover={{ scale: 1.02 }}
       className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-md w-full border border-gray-300 dark:border-gray-700"
     >
-      <div className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+      <div className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">
         BTC Daily Intelligent AI Quantitative Trading
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-center mb-2 gap-2">
+      <div className="flex md:flex-row justify-around items-center mb-2 text-sm sm:text-base">
         <div className="text-red-500 text-xl font-bold">
           1<span className="text-sm">%</span>
         </div>
         <div className="text-gray-700 dark:text-gray-300 text-sm">1 Day</div>
         <div className="text-gray-700 dark:text-gray-300 text-sm">${amount.toFixed(2)}</div>
-        <button className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition">
+        <button className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-700 transition cursor-pointer">
           Invest now
         </button>
       </div>
@@ -47,11 +47,11 @@ const InvestmentCard = ({ vipLevel, parts, amount, progress }) => {
       </div>
       <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
         This product is limited to{" "}
-        <span className="text-orange-500 font-medium">{vipLevel}</span> Buy
+        <span className="text-yellow-500 font-medium">{vipLevel}</span> Buy
       </div>
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
         <div
-          className="bg-orange-500 h-2.5 rounded-full"
+          className="bg-yellow-500 h-2.5 rounded-full"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
@@ -70,15 +70,15 @@ const Invest = () => {
   return (
     <div className="px-4 py-6 my-12">
       {/* Main Tabs */}
-      <div className="flex justify-center gap-4 mb-6 pb-2 border-b">
+      <div className="flex justify-between sm:justify-around gap-4 mb-6 pb-2 border-b border-gray-300">
         {tabList.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+            className={`px-4 py-2 text-[12px] sm:text-sm font-medium transition ${
               activeTab === tab
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                ? "border-b-2 border-b-blue-600 text-black"
+                : "text-black"
             }`}
           >
             {tab}
@@ -87,14 +87,14 @@ const Invest = () => {
       </div>
 
       {/* Sub Tabs */}
-      <div className="flex flex-wrap justify-center gap-2 mb-6">
+      <div className="flex flex-wrap justify-around sm:justify-center sm:gap-4 mb-6">
         {subTabs.map((sub) => (
           <button
             key={sub}
             onClick={() => setActiveSubTab(sub)}
             className={`px-3 py-1 rounded-full text-xs font-medium transition ${
               activeSubTab === sub
-                ? "bg-orange-500 text-white"
+                ? "bg-blue-500 text-white"
                 : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
             }`}
           >
