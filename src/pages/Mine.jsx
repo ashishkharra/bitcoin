@@ -102,7 +102,7 @@ const Mine = () => {
 
     return (
         <div className='text-[12px] sm:text-base'>
-            <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50 flex justify-between items-center px-4">
+            <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50 flex justify-between items-center px-4 z-50">
                 <div className="flex justify-between items-center px-4 gap-2">
                     <img src="/assets/images/en.png" alt="" className='rounded-full w-16' />
                     <Link to='/login' className="font-medium px-4 py-2 rounded-md bg-yellow-600 cursor-pointer">Go to login</Link>
@@ -271,7 +271,7 @@ const Mine = () => {
             </div>
 
             {showQR && (
-                <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center z-50 sm:top-40">
+                <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center z-30 sm:top-40">
                     <div className="bg-white p-8 rounded-lg max-w-md text-center border">
                         <h3 className="text-xl font-bold mb-4">Scan to Receive Payment</h3>
                         <img
