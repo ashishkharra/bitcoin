@@ -9,6 +9,8 @@ import Mine from './pages/Mine';
 import Loader from './components/Loader';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { AuthProvider } from './components/AuthProvider';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const AppContent = () => {
   const location = useLocation();
@@ -16,7 +18,7 @@ const AppContent = () => {
 
   useEffect(() => {
     setLoading(true);
-    const timeout = setTimeout(() => setLoading(false), 500); // simulate load delay
+    const timeout = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
@@ -29,9 +31,16 @@ const AppContent = () => {
         <Route path="/investments" element={<Invest />} />
         <Route path="/contract" element={<Contract />} />
         <Route path="/vip" element={<Vip />} />
-        <Route path="/me" element={<Mine />} />
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
+        <Route
+          path="/me"
+          element={
+            <ProtectedRoute>
+              <Mine />
+            </ProtectedRoute>
+          }
+        />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </>
   );
@@ -39,7 +48,9 @@ const AppContent = () => {
 
 const App = () => (
   <BrowserRouter>
-    <AppContent />
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   </BrowserRouter>
 );
 

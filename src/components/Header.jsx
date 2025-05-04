@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "./AuthProvider";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
+    const { isAuthenticated, logout } = useAuth();
 
     const isActive = (path) => location.pathname === path;
 
@@ -90,6 +92,10 @@ const Header = () => {
                         </button>
                         <span className="absolute top-0 right-0 block w-2 h-2 bg-red-500 rounded-full"></span>
                     </div>
+
+                    {isAuthenticated && (
+                        <button onClick={logout}>Logout</button>
+                    )}
                 </div>
             </div>
 

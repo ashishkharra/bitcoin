@@ -1,22 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../components/AuthProvider";
 
 const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [form, setForm] = React.useState({
     email: "",
     password: "",
   })
 
+  const staticEmail = 'a@g.com';
+  const staticPassword = '123'
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("http://192.168.29.5:1000/api/postApi/user-login", form);
-      console.log(response.data);
-      alert("Login successful!");
-    } catch (error) {
-      console.error(error);
-      alert("Login failed. Please try again.");
+    // try {
+    //   const response = await axios.post("http://192.168.29.5:1000/api/postApi/user-login", form);
+    //   console.log(response.data);
+    //   alert("Login successful!");
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Login failed. Please try again.");
+    // }
+
+    if (form.email === staticEmail && form.password === staticPassword) {
+      login();
+      const origin = location.state?.from?.pathname || '/me';
+      navigate(origin);
     }
   }
   return (
