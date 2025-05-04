@@ -158,7 +158,7 @@ const Mine = () => {
 
                     {/* Online Service */}
                     <div className="flex flex-col items-center pt-[-10px] relative">
-                        <div className="w-12 h-12 mb-3 flex items-center justify-center absolute -mt-12 sm:-mt-4">
+                        <div className="w-12 h-12 mb-3 flex items-center justify-center absolute -mt-10 sm:-mt-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -180,7 +180,7 @@ const Mine = () => {
                                 />
                             </svg>
                         </div>
-                        <p className="text-gray-700 font-medium mt-4 sm:mt-12 ">Online Service</p>
+                        <p className="text-gray-700 font-medium mt-7 sm:mt-12 ">Online Service</p>
                     </div>
 
                 </div>
