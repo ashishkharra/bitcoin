@@ -98,8 +98,8 @@ const Mine = () => {
 
     return (
         <div className='text-[12px] sm:text-base py-8'>
-            <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50 flex justify-between items-center px-4 z-50">
-                <div className="flex justify-between items-center px-4 gap-2">
+            <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full flex justify-between items-center px-4 z-40">
+                <div className="flex justify-between items-center px-4 gap-2 py-1">
                     <img src="/assets/images/en.png" alt="" className='rounded-full w-12' />
                     <div>
                         {isAuthenticated && <p className='text-lg'>Welcome <span className='font-bold'>a@g.com</span></p>}
@@ -110,7 +110,7 @@ const Mine = () => {
 
             </div>
 
-            <div className="bg-white rounded-lg shadow-md w-full max-w-4xl mx-auto p-6 mt-40">
+            <div className="bg-white rounded-lg shadow-md w-full max-w-4xl mx-auto p-6 mt-24 sm:mt-32">
                 <div className="flex md:flex-row justify-between items-center space-y-8 md:space-y-0">
 
                     {/* My Investments */}

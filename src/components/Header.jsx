@@ -17,9 +17,9 @@ const Header = () => {
         <header className="w-full shadow-md bg-white fixed top-0 left-0 right-0 z-50">
             {/* Top Section - Desktop */}
             <div className="hidden md:flex justify-between items-center px-10 py-4 max-w-7xl mx-auto">
-                <div>
+                <Link to='/' className="cursor-pointer">
                     <img src="/assets/images/logo (2).png" alt="" className="w-28 mt-[-10px]" />
-                </div>
+                </Link>
 
                 <nav className="hidden md:flex gap-8">
                     <Link
@@ -171,7 +171,7 @@ const Header = () => {
                             <img src="/assets/images/en.png" alt="" className="w-8 mr-2" />
                             English
                         </button>
-                        <button className="text-yellow-500 font-medium">Log In</button>
+                        {isAuthenticated ? <button className="text-yellow-500 font-medium" onClick={logout}>Log out</button> : <Link to='/login' className="text-yellow-500 font-medium">Log In</Link>}
                     </div>
                 </div>
             )}
