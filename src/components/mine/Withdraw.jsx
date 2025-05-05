@@ -120,12 +120,12 @@ const Withdraw = () => {
                                             : 'border-gray-200 hover:bg-gray-50'
                                             }`}
                                     >
-                                        <div className="flex justify-between items-center">
+                                        <div className="flex flex-col text-start">
                                             <span className={`font-medium ${selectedAmount === amount.toString() ? 'text-blue-600' : 'text-gray-800'
                                                 }`}>
                                                 ${amount.toLocaleString()}
                                             </span>
-                                            <span className={`text-xs px-2 py-1 rounded-full ${selectedAmount === amount.toString()
+                                            <span className={`text-[12px] sm:text-xs px-2 py-1 rounded-full ${selectedAmount === amount.toString()
                                                 ? 'bg-blue-100 text-blue-700'
                                                 : 'bg-gray-100 text-gray-600'
                                                 }`}>
