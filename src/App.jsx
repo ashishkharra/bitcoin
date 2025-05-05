@@ -18,9 +18,11 @@ import My_Team from './components/mine/My_Team';
 import My_Rewards from './components/mine/My_Rewards';
 import Points_Record from './components/mine/Points_Record';
 import Wallet_Recharge from './components/mine/Wallet_Recharge';
+import My_Wallet from './components/mine/My_Wallet'
 import Settings from './components/mine/Settings';
 import { AuthProvider } from './components/AuthProvider';
 import ProtectedRoute from './components/ProtectedRoute';
+import Transfer from './components/mine/Transfer';
 
 const AppContent = () => {
   const location = useLocation();
@@ -118,7 +120,7 @@ const AppContent = () => {
           path="/me/wallet-recharge"
           element={
             <ProtectedRoute>
-              <Wallet_Recharge/>
+              <Wallet_Recharge />
             </ProtectedRoute>
           }
         />
@@ -128,6 +130,24 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Withdraw />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/me/wallet"
+          element={
+            <ProtectedRoute>
+              <My_Wallet />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/me/transfer"
+          element={
+            <ProtectedRoute>
+              <Transfer/>
             </ProtectedRoute>
           }
         />

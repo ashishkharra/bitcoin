@@ -1,5 +1,6 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const wallets = [
   { type: "USDT-TRC20", description: "BindUSDT-TRC20" },
@@ -8,11 +9,12 @@ const wallets = [
 ];
 
 export default function MyWalletPage() {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-100 flex justify-center py-12 px-4 sm:px-6 lg:px-8 my-16">
       <div className="w-full max-w-2xl space-y-6">
         <div className="flex items-center justify-between text-gray-800">
-          <button className="text-xl font-semibold">←</button>
+          <button className="text-xl font-semibold cursor-pointer" onClick={() => navigate('/me')}>←</button>
           <h2 className="text-xl font-semibold">My wallet</h2>
           <div className="w-6" /> {/* Spacer for symmetry */}
         </div>

@@ -1,11 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function TransferToFriendsPage() {
+export default function Transfer() {
+  const navigate = useNavigate();
   return (
-    <div className="bg-white flex justify-center items-start py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white flex justify-center items-start py-12 px-4 sm:px-6 lg:px-8 my-10">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900">Transfer to friends</h2>
+          <div className="flex justify-between">
+            <button className="text-lg" onClick={() => navigate('/me')}>&larr;</button>
+            <h2 className="text-2xl font-bold text-gray-900">Transfer to friends</h2>
+          </div>
           <div className="text-sm text-right text-blue-600 cursor-pointer hover:underline">
             Record
           </div>

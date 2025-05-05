@@ -11,7 +11,7 @@ const Mine = () => {
             name: "Transfer",
             color: "text-sky-400",
             icon: "transfer",
-            action: () => setShowQR(true)
+            route: "/me/transfer"
         },
         { name: "Wallet Recharge", color: "text-red-400", icon: "recharge", route: "/me/wallet-recharge" },
         { name: "Wallet Withdrawal", color: "text-green-400", icon: "withdrawal", route: "/me/withdraw" },
@@ -95,19 +95,7 @@ const Mine = () => {
             </svg>
         ),
     };
-
-    const [showWithdrawBlock, setShowWithdrawBlock] = useState(false);
-    const [password, setPassword] = useState('');
-    const [selectedAmount, setSelectedAmount] = useState('');
-    const [showQR, setShowQR] = useState(false);
-
-    const withdrawAmounts = [
-        "200,000-150,000",
-        "200,000-100,000",
-        "200,000-50,000",
-        "200,000-0"
-    ];
-
+    
     return (
         <div className='text-[12px] sm:text-base py-10'>
             <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50 flex justify-between items-center px-4 z-50">
@@ -268,26 +256,6 @@ const Mine = () => {
                     </Link>
                 ))}
             </div>
-
-            {showQR && (
-                <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center z-30 sm:top-40">
-                    <div className="bg-white p-8 rounded-lg max-w-md text-center border">
-                        <h3 className="text-xl font-bold mb-4">Scan to Receive Payment</h3>
-                        <img
-                            src="/assets/images/qr.jpg"
-                            alt="Payment QR Code"
-                            className="w-64 h-64 mx-auto mb-4 border-2 border-gray-200 object-contain"
-                        />
-                        <button
-                            onClick={() => setShowQR(false)}
-                            className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg"
-                        >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            )}
-
         </div>
     )
 }
