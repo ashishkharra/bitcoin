@@ -18,7 +18,7 @@ export default function Transfer() {
 
         <div className="bg-blue-500 rounded-lg p-6 text-center text-white font-semibold text-lg">
           <div>Wallet balance</div>
-          <div className="text-3xl font-bold">1.05</div>
+          <div className="text-3xl font-bold">$10,000</div>
         </div>
 
         <div>

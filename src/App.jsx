@@ -23,6 +23,9 @@ import Settings from './components/mine/Settings';
 import { AuthProvider } from './components/AuthProvider';
 import ProtectedRoute from './components/ProtectedRoute';
 import Transfer from './components/mine/Transfer';
+import Investments from './components/mine/Investments';
+import BillingDetails from './components/mine/BillingDetails';
+import OnlineService from './components/mine/OnlineService';
 
 const AppContent = () => {
   const location = useLocation();
@@ -147,7 +150,34 @@ const AppContent = () => {
           path="/me/transfer"
           element={
             <ProtectedRoute>
-              <Transfer/>
+              <Transfer />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/me/my-investments"
+          element={
+            <ProtectedRoute>
+              <Investments />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/me/billing-details"
+          element={
+            <ProtectedRoute>
+              <BillingDetails />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/me/my-services"
+          element={
+            <ProtectedRoute>
+              <OnlineService/>
             </ProtectedRoute>
           }
         />

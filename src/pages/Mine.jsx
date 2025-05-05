@@ -95,13 +95,16 @@ const Mine = () => {
             </svg>
         ),
     };
-    
+
     return (
-        <div className='text-[12px] sm:text-base py-10'>
+        <div className='text-[12px] sm:text-base py-8'>
             <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full z-50 flex justify-between items-center px-4 z-50">
                 <div className="flex justify-between items-center px-4 gap-2">
-                    <img src="/assets/images/en.png" alt="" className='rounded-full w-16' />
-                    {isAuthenticated && <p>Welcome a@g.com</p>}
+                    <img src="/assets/images/en.png" alt="" className='rounded-full w-12' />
+                    <div>
+                        {isAuthenticated && <p className='text-lg'>Welcome <span className='font-bold'>a@g.com</span></p>}
+                        <p className='text-start'>Refer code 1234</p>
+                    </div>
                 </div>
                 <Link to='/me/settings' className='cursor-pointer'><IoSettingsOutline size={24} /></Link>
 
@@ -112,7 +115,7 @@ const Mine = () => {
 
                     {/* My Investments */}
                     <div className="flex flex-col items-center">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3">
+                        <Link to='/me/my-investments' className="w-10 h-10 sm:w-12 sm:h-12 mb-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
@@ -127,13 +130,13 @@ const Mine = () => {
                                 <path d="M2 17l10 5 10-5" />
                                 <path d="M2 12l10 5 10-5" />
                             </svg>
-                        </div>
+                        </Link>
                         <p className="text-gray-700 font-medium">My Investments</p>
                     </div>
 
                     {/* Billing Details */}
                     <div className="flex flex-col items-center">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3">
+                        <Link to='/me/billing-details' className="w-10 h-10 sm:w-12 sm:h-12 mb-3">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -148,13 +151,13 @@ const Mine = () => {
                                     d="M9 17v-2h6v2a2 2 0 002 2h1a2 2 0 002-2V7a2 2 0 00-2-2h-1a2 2 0 00-2 2v2H9V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2h1a2 2 0 002-2z"
                                 />
                             </svg>
-                        </div>
+                        </Link>
                         <p className="text-gray-700 font-medium">Billing Details</p>
                     </div>
 
                     {/* Online Service */}
                     <div className="flex flex-col items-center pt-[-10px] relative">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 flex items-center justify-center absolute -mt-9 sm:-mt-4">
+                        <Link to='/me/my-services' className="w-10 h-10 sm:w-12 sm:h-12 mb-3 flex items-center justify-center absolute -mt-9 sm:-mt-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -175,7 +178,7 @@ const Mine = () => {
                                     d="M8 15h.01M16 15h.01"
                                 />
                             </svg>
-                        </div>
+                        </Link>
                         <p className="text-gray-700 font-medium mt-5 sm:mt-12 ">Online Service</p>
                     </div>
 
