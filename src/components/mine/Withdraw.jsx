@@ -58,8 +58,8 @@ const Withdraw = () => {
                                 />
                             </div>
 
-                            <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
-                                Scan this QR code using your USDT wallet to complete the transaction
+                            <p className="text-xs text-center sm:text-sm text-gray-600 mb-4 sm:mb-6">
+                                A fee of <span className="font-semibold text-red-600">${Math.floor(Number(selectedAmount) * 0.075).toLocaleString()}</span> will be deducted.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-3">
@@ -198,7 +198,7 @@ const Withdraw = () => {
 
                     {/* Action Buttons */}
                     <div className="flex flex-col gap-3">
-                        <button
+                        {/* <button
                             onClick={() => {
                                 if (password === withdrawalPassword) {
                                     alert(`Withdrawal of $${selectedAmount} initiated!`);
@@ -211,7 +211,7 @@ const Withdraw = () => {
                             className="w-full py-3 bg-blue-600 hover:bg-blue-700 cursor-pointer text-white font-medium rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
                         >
                             Withdraw
-                        </button>
+                        </button> */}
                     </div>
                     <div className="flex flex-col gap-3 mt-2">
                         <button
