@@ -6,7 +6,7 @@ import { useAuth } from '../components/AuthProvider';
 const Mine = () => {
     const { isAuthenticated } = useAuth();
     const tools = [
-        { name: "My Wallet", color: "text-blue-500", icon: "wallet",route: "/me/wallet" },  
+        { name: "My Wallet", color: "text-blue-500", icon: "wallet", route: "/me/wallet" },
         {
             name: "Transfer",
             color: "text-sky-400",
@@ -101,10 +101,12 @@ const Mine = () => {
             <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full flex justify-between items-center px-4 z-40">
                 <div className="flex justify-between items-center px-4 gap-2 py-1">
                     <img src="/assets/images/en.png" alt="" className='rounded-full w-12' />
-                    <div>
-                        {isAuthenticated && <p className='text-lg'>Welcome <span className='font-bold'>a@g.com</span></p>}
-                        <p className='text-start'>Refer code 1234</p>
-                    </div>
+                    {isAuthenticated && (
+                        <div>
+                            <p className='text-lg'>Welcome <span className='font-bold'>a@g.com</span></p>
+                            <p className='text-start'>Referral code: 1234</p>
+                        </div>
+                    )}
                 </div>
                 <Link to='/me/settings' className='cursor-pointer'><IoSettingsOutline size={24} /></Link>
 
