@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-
-// Register the necessary chart components
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+import React, { useState, useEffect, useRef } from "react";
+import TradingChart from "../components/TradingChart";
 
 const timeframes = ["1min", "5min", "15min", "30min", "60min", "4hour", "1day"];
 const indicators = ["VOL", "MACD", "KDJ", "RSI", "DMI", "OBV", "BOLL", "SAR", "DMA", "TRIX", "BRAR", "VR", "EMV", "WR", "ROC", "MTM", "PSY"];
@@ -69,8 +65,8 @@ export default function Contract() {
             </div>
 
             {/* Chart Placeholder */}
-            <div className="bg-gray-100 h-48 flex items-center justify-center text-gray-500 mb-2 rounded">
-                <Line data={data} options={options} className="w-full h-full"/>
+            <div className="z-20">
+            <TradingChart />
             </div>
 
             {/* Indicators */}
@@ -90,8 +86,8 @@ export default function Contract() {
                     <button
                         onClick={() => setActiveTab('In Progress')}
                         className={`px-4 py-2 whitespace-nowrap text-sm font-medium ${activeTab === 'In Progress'
-                                ? 'border-b-2 border-blue-600 text-blue-600'
-                                : 'text-gray-500 hover:text-gray-700'
+                            ? 'border-b-2 border-blue-600 text-blue-600'
+                            : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
                         In Progress
@@ -99,8 +95,8 @@ export default function Contract() {
                     <button
                         onClick={() => setActiveTab('Completed')}
                         className={`px-4 py-2 whitespace-nowrap text-sm font-medium ${activeTab === 'Completed'
-                                ? 'border-b-2 border-blue-600 text-blue-600'
-                                : 'text-gray-500 hover:text-gray-700'
+                            ? 'border-b-2 border-blue-600 text-blue-600'
+                            : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
                         Completed
@@ -139,7 +135,7 @@ export default function Contract() {
             </div>
 
             {/* Buttons */}
-            <div className="flex gap-4 w-fit fixed bottom-10 left-8 my-10">
+            <div className="flex gap-4 w-fit fixed bottom-10 left-8 my-10 z-50">
                 <button className="flex-1 bg-green-600 text-white py-2 rounded w-fit px-5">Buy Up</button>
                 <button className="flex-1 bg-red-600 text-white py-2 rounded w-fit px-5">Buy Down</button>
             </div>

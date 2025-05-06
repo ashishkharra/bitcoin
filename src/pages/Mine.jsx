@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../components/AuthProvider';
 
 const Mine = () => {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, username } = useAuth();
     const tools = [
         { name: "My Wallet", color: "text-blue-500", icon: "wallet", route: "/me/wallet" },
         {
@@ -103,7 +103,7 @@ const Mine = () => {
                     <img src="/assets/images/en.png" alt="" className='rounded-full w-12' />
                     {isAuthenticated ? (
                         <div>
-                            <p className='text-lg'>Welcome <span className='font-bold'>a@g.com</span></p>
+                            <p className='text-lg'>Welcome <span className='font-bold'>{username}</span></p>
                             <p className='text-start'>Referral code: 1234</p>
                         </div>
                     ) : (

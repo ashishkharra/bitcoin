@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Withdraw = () => {
-    const withdrawalPassword = "123";
+    const withdrawalPassword = "Neo0671";
     const availableBalance = 1.05;
     const amounts = [200000, 400000, 600000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000];
     const navigate = useNavigate();

@@ -8,12 +8,12 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [form, setForm] = React.useState({
-    email: "",
+    username: "",
     password: "",
   })
 
-  const staticEmail = 'a@g.com';
-  const staticPassword = '123'
+  const staticUsername = 'Hilkeno';
+  const staticPassword = 'Hilk0671'
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,8 +26,8 @@ const Login = () => {
     //   alert("Login failed. Please try again.");
     // }
 
-    if (form.email === staticEmail && form.password === staticPassword) {
-      login();
+    if (form.username === staticUsername && form.password === staticPassword) {
+      login(form.username);
       const origin = location.state?.from?.pathname || '/me';
       navigate(origin);
     }
@@ -55,9 +55,9 @@ const Login = () => {
             </svg>
             <input
               type="text"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="Please enter your mobile phone number/email"
+              value={form.username}
+              onChange={(e) => setForm({ ...form, username: e.target.value })}
+              placeholder="Please enter your mobile username/phone number"
               className="bg-transparent focus:outline-none w-full text-sm text-gray-700 placeholder-gray-400"
             />
           </div>
