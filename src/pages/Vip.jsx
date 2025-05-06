@@ -9,7 +9,7 @@ const Vip = () => {
     return (
         <div className="w-full py-4 bg-white rounded-lg shadow-sm">
             {/* Header */}
-            <div className="text-center mt-[63px] bg-blue-600 text-white py-4 top-0 fixed w-full z-50">
+            <div className="text-center mt-[63px] bg-blue-600 text-white py-4 top-0 fixed w-full z-40">
                 <h1 className="text-2xl font-bold mb-2">Activate VIP</h1>
                 <Link to='/login' className="font-medium px-4 py-2 rounded-md bg-yellow-600 cursor-pointer">Go to login</Link>
             </div>

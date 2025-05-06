@@ -78,17 +78,16 @@ const Withdraw = () => {
             {/* Main Withdrawal Content */}
             <div className={`bg-white rounded-xl shadow-xl w-full max-w-lg overflow-hidden transform transition-all ${showQR ? 'blur-xs' : ''}`}>
                 {/* Header */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-5 sm:px-8 sm:py-6">
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white">Withdraw Funds</h2>
+                <div className="px-6 py-5 sm:px-8 sm:py-6">
+                    <div className="flex justify-between items-center border-b py-2">
                         <button
                             onClick={handleClose}
-                            className="text-white hover:text-blue-100 transition-colors"
+                            className=" hover:text-blue-100 transition-color"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
+                            &larr;
                         </button>
+                        <h2 className="text-base sm:text-2xl font-bold">Withdraw Funds</h2>
+
                     </div>
                 </div>
 
@@ -96,7 +95,7 @@ const Withdraw = () => {
                 <div className="p-6 sm:p-8">
                     {/* Withdrawal Account Section */}
                     <div className="mb-6">
-                        <h3 className="text-sm font-medium text-gray-500 mb-2">Withdrawal account</h3>
+                        <h3 className="text-xs sm:text-sm font-medium text-gray-500 mb-2">Withdrawal account</h3>
                         <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
                             <span className="font-medium text-blue-700">USDT wallet (USDT-TRC20)</span>
                             <span className="text-sm text-blue-600">Expected arrival: 30 mins</span>

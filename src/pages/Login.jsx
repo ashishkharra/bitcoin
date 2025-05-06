@@ -34,7 +34,9 @@ const Login = () => {
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
+      
       <div className="w-full max-w-md p-8 rounded-lg shadow-lg">
+      <button className="text-xl my-2 cursor-pointer" onClick={() => navigate('/')}>&larr;</button>
         {/* Heading */}
         <h1 className="text-2xl font-bold mb-6 text-gray-900">You're welcome</h1>
 

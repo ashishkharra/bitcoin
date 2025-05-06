@@ -101,11 +101,13 @@ const Mine = () => {
             <div className="text-center mt-[63px] bg-blue-600 text-white py-2 top-0 fixed w-full flex justify-between items-center px-4 z-40">
                 <div className="flex justify-between items-center px-4 gap-2 py-1">
                     <img src="/assets/images/en.png" alt="" className='rounded-full w-12' />
-                    {isAuthenticated && (
+                    {isAuthenticated ? (
                         <div>
                             <p className='text-lg'>Welcome <span className='font-bold'>a@g.com</span></p>
                             <p className='text-start'>Referral code: 1234</p>
                         </div>
+                    ) : (
+                        <Link to='/login' className='cursor-pointer px-3 py-1 rounded-md bg-yellow-600 hover:bg-yellow-700'>Log in</Link>
                     )}
                 </div>
                 <Link to='/me/settings' className='cursor-pointer'><IoSettingsOutline size={24} /></Link>
@@ -194,7 +196,7 @@ const Mine = () => {
                 <div className="flex justify-between items-start mb-6">
                     <div>
                         <h2 className="text-gray-800 font-semibold text-lg">Balance</h2>
-                        <p className="text-2xl font-bold mt-1">$10,000</p>
+                        <p className="text-2xl font-bold mt-1">{isAuthenticated ? '$2194277.72' : '$0'}</p>
                     </div>
                     <Link
                         to="/withdraw"
@@ -207,19 +209,19 @@ const Mine = () => {
                 {/* Bottom Stats */}
                 <div className="flex justify-between text-center text-gray-700">
                     <div>
-                        <p className="font-semibold">500</p>
+                        <p className="font-semibold text-lg">{isAuthenticated ? '$122121.72' : '$0'}</p>
                         <p className="text-sm text-gray-500 mt-1">Total Earnings</p>
                     </div>
                     <div>
-                        <p className="font-semibold">15</p>
+                        <p className="font-semibold text-lg">{isAuthenticated ? '$303.98' : '$0'}</p>
                         <p className="text-sm text-gray-500 mt-1">Total Rewards</p>
                     </div>
                     <div>
-                        <p className="font-semibold">300</p>
+                        <p className="font-semibold text-lg">{isAuthenticated ? '$120,000' : '$0'}</p>
                         <p className="text-sm text-gray-500 mt-1">Margin</p>
                     </div>
                     <div>
-                        <p className="font-semibold">150</p>
+                        <p className="font-semibold text-lg">{isAuthenticated ? '$0' : '$0'}</p>
                         <p className="text-sm text-gray-500 mt-1">Freeze</p>
                     </div>
                 </div>
