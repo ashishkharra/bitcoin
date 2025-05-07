@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom"; 
+import { useAuth } from "../../components/AuthProvider";
 
 const MyTeam = () => {
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 min-h-screen my-20">
@@ -17,20 +19,20 @@ const MyTeam = () => {
           </div>
           <div>
             <p className="font-semibold text-lg">option</p>
-            <p className="text-sm">Referral code: <span className="font-medium">D4061859</span></p>
+            <p className="text-sm">Referral code: <span className="font-medium">1234</span></p>
           </div>
         </div>
         <div className="grid grid-cols-3 text-center text-sm">
           <div>
-            <p className="text-lg font-bold">1.05</p>
+            <p className="text-lg font-bold">{isAuthenticated ? '$122121.72' : '$0'}</p>
             <p>Total earnings</p>
           </div>
           <div>
-            <p className="text-lg font-bold">1.05</p>
+            <p className="text-lg font-bold">{isAuthenticated ? '$1221.72' : '$0'}</p>
             <p>Today</p>
           </div>
           <div>
-            <p className="text-lg font-bold">0</p>
+            <p className="text-lg font-bold">{isAuthenticated ? '$1121.72' : '$0'}</p>
             <p>Yesterday</p>
           </div>
         </div>

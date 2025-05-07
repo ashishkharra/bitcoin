@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../components/AuthProvider';
 
 const Settings = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const menuItems = [
     { label: 'Update Profile', path: '/update-profile' },
@@ -12,8 +14,8 @@ const Settings = () => {
   ];
 
   const handleSignOut = () => {
-    // Implement your sign-out logic here
-    console.log("Signing out...");
+    logout();
+    navigate('/login');
   };
 
   return (
@@ -32,7 +34,7 @@ const Settings = () => {
         {menuItems.map((item, index) => (
           <div
             key={index}
-            onClick={() => navigate(item.path)}
+            onClick={() => alert('Coming soon!')}
             className="bg-white p-4 rounded-lg shadow flex justify-between items-center cursor-pointer"
           >
             <span className="font-medium">{item.label}</span>

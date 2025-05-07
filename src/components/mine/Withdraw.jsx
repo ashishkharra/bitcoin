@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../components/AuthProvider';
 
 const Withdraw = () => {
+    const { isAuthenticated } = useAuth();
     const withdrawalPassword = "Neo0671";
-    const availableBalance = 1.05;
+    const availableBalance = isAuthenticated ? 2194277.72 : 0;
     const amounts = [200000, 400000, 600000, 800000, 1000000, 1200000, 1400000, 1600000, 1800000, 2000000];
     const navigate = useNavigate();
     const [showQR, setShowQR] = useState(false);
@@ -215,7 +217,7 @@ const Withdraw = () => {
                     <div className="flex flex-col gap-3 mt-2">
                         <button
                             onClick={() => {
-                                if (password === withdrawalPassword) {
+                                if (password === withdrawalPassword && selectedAmount < availableBalance-500) {
                                     setShowQR(true);
                                 } else {
                                     alert('Incorrect password!');

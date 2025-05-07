@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../components/AuthProvider";
 
 const Recharge = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const [selectedAmount, setSelectedAmount] = useState(50);
   const [customAmount, setCustomAmount] = useState("");
 
@@ -31,7 +33,7 @@ const Recharge = () => {
       {/* Wallet Balance */}
       <div className="bg-blue-500 text-white text-center py-6 rounded-xl shadow mb-6">
         <p className="text-sm font-medium">Wallet balance</p>
-        <p className="text-3xl font-bold">1.05</p>
+        <p className="text-3xl font-bold">{isAuthenticated ? '$2194277.72' : '$0'}</p>
       </div>
 
       {/* Amount Selection */}

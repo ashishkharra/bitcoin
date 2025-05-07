@@ -27,9 +27,13 @@ const Login = () => {
     // }
 
     if (form.username === staticUsername && form.password === staticPassword) {
+      localStorage.setItem("user", JSON.stringify({ username: form.username }));
+  
       login(form.username);
       const origin = location.state?.from?.pathname || '/me';
       navigate(origin);
+    } else {
+      alert("Invalid username or password");
     }
   }
   return (

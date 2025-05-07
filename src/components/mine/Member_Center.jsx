@@ -1,8 +1,10 @@
 import react from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../components/AuthProvider";
 
 function MemberCenter() {
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
     const benefits = [
       { title: "Daily Investment Limit", subtitle: "1 Secondary", icon: "📅" },
       { title: "Number of investments per month", subtitle: "2 Secondary", icon: "📋" },
@@ -29,7 +31,7 @@ function MemberCenter() {
           <div className="flex items-center space-x-6">
             <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
               <img
-                src="https://via.placeholder.com/60"
+                src="/assets/images/en.png"
                 alt="avatar"
                 className="rounded-full"
               />
@@ -40,9 +42,9 @@ function MemberCenter() {
             </div>
           </div>
           <div className="text-right">
-            <div className="font-semibold text-2xl">1.05</div>
+            <div className="font-semibold text-2xl">{isAuthenticated ? '$122121.72' : '$0'}</div>
             <div className="text-md text-gray-700">Balance</div>
-            <div className="font-semibold text-2xl">0.00</div>
+            <div className="font-semibold text-2xl">{isAuthenticated ? '$1221.72' : '$0'}</div>
             <div className="text-md text-gray-700">Earnings</div>
           </div>
         </div>
