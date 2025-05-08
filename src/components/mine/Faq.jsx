@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 const faqData = [
   {
@@ -66,11 +67,21 @@ export default function FAQPage() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+    const location = useLocation();
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const curr = location.pathname.split('/').pop();
+  
+    useEffect(() => {
+      if (storedUser?.username) {
+        navigate(`/me/${curr}`, { replace: true });
+      }
+    }, []);
+
   return (
     <div className=" bg-gray-100 flex justify-center py-12 px-4 sm:px-6 lg:px-8 my-10">
       <div className="w-full max-w-2xl">
         <div className="flex items-center justify-between text-gray-800 mb-6">
-          <button className="text-xl font-semibold" onClick={() => navigate('/me')}>←</button>
+          <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22}/></div>
           <h2 className="text-xl font-semibold">FAQ</h2>
           <div className="w-6" />
         </div>

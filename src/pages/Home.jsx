@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Home = () => {
     const slides = [
-        { id: 1, img: '/assets/images/slide1.jpg', alt: 'Virtual currency your path to digital wealth' },
-        { id: 2, img: '/assets/images/slide2.jpg', alt: 'Celebrities investing in crypto' },
-        { id: 3, img: '/assets/images/slide3.jpg', alt: 'Virtual currency benefits' },
-        { id: 4, img: '/assets/images/slide4.jpg', alt: 'Crypto in 2024' }
+        { id: 1, img: '/assets/images/slide1 (1).jpg', alt: 'Virtual currency your path to digital wealth' },
+        { id: 2, img: '/assets/images/slide1 (2).jpg', alt: 'Celebrities investing in crypto' },
+        { id: 3, img: '/assets/images/slide1 (3).jpg', alt: 'Virtual currency benefits' },
+        { id: 4, img: '/assets/images/slide1 (4).jpg', alt: 'Crypto in 2024' }
     ];
 
     const features = [
@@ -107,9 +107,9 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 px-2 sm:px-0">
             {/* Hero Slider */}
-            <div className="relative w-full mt-20 h-36 md:h-96 overflow-hidden rounded-xl sm:rounded-none shadow-2xl">
+            <div className="relative w-full mt-20 h-36 md:h-96 overflow-hidden rounded-xl sm:rounded-none shadow-2xl ">
                 <AnimatePresence custom={direction} initial={false}>
                     <motion.div
                         key={currentSlide}

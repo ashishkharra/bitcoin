@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 const Register = () => {
   const [show,setShow] = React.useState(false);
@@ -12,24 +12,16 @@ const Register = () => {
   })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if(form.password !== form.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    try {
-      const response = await axios.post("http://192.168.29.5:1000/api/postApi/user-signup", form);
-      console.log(response.data);
-      alert("Registration successful!");
-    } catch (error) {
-      console.error(error);
-      alert("Registration failed. Please try again.");
-    }
+    alert("Registration successful!");
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
       <div className="w-full max-w-md p-6 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold text-gray-900">You're welcome</h1>
+        <div className="flex justify-between items-center">
+          <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22}/></div>
+          <h1 className="text-2xl font-bold text-gray-900">You're welcome</h1>
+        </div>
+
         <p className="text-sm text-gray-500 mb-6">Register with Email and Password</p>
 
         <form className="space-y-4" onSubmit={handleSubmit}>

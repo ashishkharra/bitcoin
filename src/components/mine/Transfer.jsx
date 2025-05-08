@@ -1,14 +1,26 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect} from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 export default function Transfer() {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const curr = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (storedUser?.username) {
+      navigate(`/me/${curr}`, { replace: true });
+    }
+  }, []);
+  
   return (
     <div className="bg-white flex justify-center items-start py-12 px-4 sm:px-6 lg:px-8 my-10">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <div className="flex justify-between">
-            <button className="text-lg" onClick={() => navigate('/me')}>&larr;</button>
+          <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22}/></div>
             <h2 className="text-2xl font-bold text-gray-900">Transfer to friends</h2>
           </div>
           <div className="text-sm text-right text-blue-600 cursor-pointer hover:underline">

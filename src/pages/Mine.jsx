@@ -22,7 +22,7 @@ const Mine = () => {
         { name: "My Rewards", color: "text-red-400", icon: "rewards", route: "/me/rewards" },
         { name: "Member Center", color: "text-teal-400", icon: "member", route: "/me/member-center" },
         { name: "FAQ", color: "text-yellow-400", icon: "faq", route: "/me/faq" },
-        { name: "Sign-In Reward", color: "text-yellow-400", icon: "signin", route: "/me/signin" },
+        { name: "Sign-In Reward", color: "text-yellow-400", icon: "signin", route: "/me" },
     ];
 
     const icons = {

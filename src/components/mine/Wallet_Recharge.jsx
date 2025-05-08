@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
 import { useAuth } from "../../components/AuthProvider";
 
 const Recharge = () => {
@@ -21,11 +22,21 @@ const Recharge = () => {
     setSelectedAmount(Number(value));
   };
 
+  const location = useLocation();
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const curr = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (storedUser?.username) {
+      navigate(`/me/${curr}`, { replace: true });
+    }
+  }, []);
+
   return (
     <div className="bg-gray-100 px-6 py-6 md:px-24 lg:px-48 my-16">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <button className="text-lg" onClick={() => navigate('/me')}>&larr;</button>
+      <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22}/></div>
         <h1 className="text-xl font-semibold">Recharge</h1>
         <button className="text-black font-medium">Record</button>
       </div>

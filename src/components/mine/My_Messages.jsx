@@ -1,5 +1,6 @@
-import react from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 function InformationPage() {
   const navigate = useNavigate();
@@ -18,10 +19,20 @@ function InformationPage() {
     },
   ];
 
+  const location = useLocation();
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const curr = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (storedUser?.username) {
+      navigate(`/me/${curr}`, { replace: true });
+    }
+  }, []);
+
   return (
     <div className="max-w-3xl mx-auto p-6 bg-gray-100 my-16">
       <div>
-        <button className="text-lg" onClick={() => navigate('/me')}>&larr;</button>
+        <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22}/></div>
         <h2 className="text-center text-2xl font-bold mb-6">Information</h2>
       </div>
 

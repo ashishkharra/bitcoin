@@ -1,60 +1,64 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { IoChevronBackSharp } from "react-icons/io5";
 import { FaTelegramPlane, FaUsers, FaHeadset, FaQuestionCircle } from 'react-icons/fa';
 
-const services = [
-  {
-    icon: <FaTelegramPlane className="text-xl text-white" />,
-    bg: 'bg-blue-500',
-    title: 'Telegram',
-    description: 'Online customer service',
-  },
-  {
-    icon: <FaUsers className="text-xl text-white" />,
-    bg: 'bg-black',
-    title: 'Member group',
-    description: 'Everyone is welcome to join',
-  },
-  {
-    icon: <FaHeadset className="text-xl text-white" />,
-    bg: 'bg-blue-500',
-    title: 'Online customer service',
-    description: '',
-  },
-  {
-    icon: <FaQuestionCircle className="text-xl text-white" />,
-    bg: 'bg-orange-500',
-    title: 'FAQ',
-    description: 'Quickly familiarize yourself with platform operations',
-  },
-];
-
 const OnlineService = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const services = [
+    {
+      icon: <FaTelegramPlane className="text-xl text-white" />,
+      bg: 'bg-blue-500',
+      title: 'Telegram',
+      description: 'Online customer service',
+    },
+    {
+      icon: <FaUsers className="text-xl text-white" />,
+      bg: 'bg-black',
+      title: 'Member group',
+      description: 'Everyone is welcome to join',
+    },
+    {
+      icon: <FaHeadset className="text-xl text-white" />,
+      bg: 'bg-blue-500',
+      title: 'Online customer service',
+      description: 'Ask your questions anytime',
+    },
+    {
+      icon: <FaQuestionCircle className="text-xl text-white" />,
+      bg: 'bg-orange-500',
+      title: 'FAQ',
+      description: 'Frequently asked questions',
+    },
+  ];
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const curr = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (storedUser?.username) {
+      navigate(`/me/${curr}`, { replace: true });
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-4 sm:px-6 lg:px-8 my-16">
-      <div className='flex justify-between'>
-      <button className="text-lg" onClick={() => navigate('/me')}>&larr;</button>
-      <div className="text-center mb-6 text-xl font-semibold">Online Service</div>
+    <div className='my-16'>
+      <div className="flex items-center p-4">
+        <IoChevronBackSharp onClick={() => navigate(-1)} className="text-2xl cursor-pointer" />
+        <h1 className="ml-4 text-lg font-semibold">Online Service</h1>
       </div>
-      <div className="space-y-4">
-        {services.map((service, idx) => (
+      <div className="grid grid-cols-2 gap-4 p-4">
+        {services.map((service, index) => (
           <div
-            key={idx}
-            className="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm"
+            key={index}
+            className="p-4 rounded-xl shadow-md flex flex-col items-center text-center"
           >
-            <div className="flex items-center space-x-4">
-              <div className={`w-10 h-10 flex items-center justify-center rounded-full ${service.bg}`}>
-                {service.icon}
-              </div>
-              <div>
-                <div className="font-bold">{service.title}</div>
-                {service.description && (
-                  <div className="text-gray-500 text-sm">{service.description}</div>
-                )}
-              </div>
+            <div className={`p-3 rounded-full ${service.bg}`}>
+              {service.icon}
             </div>
-            <div className="text-gray-400 text-lg">{'>'}</div>
+            <h2 className="mt-2 font-semibold">{service.title}</h2>
+            <p className="text-sm text-gray-500">{service.description}</p>
           </div>
         ))}
       </div>

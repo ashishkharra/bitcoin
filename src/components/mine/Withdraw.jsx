@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { IoChevronBackSharp } from "react-icons/io5";
 import { useAuth } from '../../components/AuthProvider';
 
 const Withdraw = () => {
@@ -14,10 +15,16 @@ const Withdraw = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleClose = () => {
-        setIsOpen(false);
-        navigate('/me')
-    };
+    const location = useLocation();
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const curr = location.pathname.split('/').pop();
+    console.log(curr);
+
+    useEffect(() => {
+        if (storedUser?.username) {
+            navigate(`/me/${curr}`, { replace: true });
+        }
+    }, []);
 
     if (!isOpen) return null;
 
@@ -82,14 +89,8 @@ const Withdraw = () => {
                 {/* Header */}
                 <div className="px-6 py-5 sm:px-8 sm:py-6">
                     <div className="flex justify-between items-center border-b py-2">
-                        <button
-                            onClick={handleClose}
-                            className=" hover:text-blue-100 transition-color"
-                        >
-                            &larr;
-                        </button>
+                        <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22} /></div>
                         <h2 className="text-base sm:text-2xl font-bold">Withdraw Funds</h2>
-
                     </div>
                 </div>
 
@@ -217,7 +218,7 @@ const Withdraw = () => {
                     <div className="flex flex-col gap-3 mt-2">
                         <button
                             onClick={() => {
-                                if (password === withdrawalPassword && selectedAmount < availableBalance-500) {
+                                if (password === withdrawalPassword && selectedAmount < availableBalance - 500) {
                                     setShowQR(true);
                                 } else {
                                     alert('Incorrect password!');

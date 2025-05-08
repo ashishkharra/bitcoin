@@ -1,31 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './pages/Home';
-import Invest from './pages/Invest';
-import Contract from './pages/Contract';
-import Vip from './pages/Vip';
-import Mine from './pages/Mine';
 import Loader from './components/Loader';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Withdraw from './components/mine/Withdraw';
-import Faq from './components/mine/Faq';
-import Auth_Center from './components/mine/Auth_Center';
-import Member_Center from './components/mine/Member_Center';
-import My_Messages from './components/mine/My_Messages';
-import My_Team from './components/mine/My_Team';
-import My_Rewards from './components/mine/My_Rewards';
-import Points_Record from './components/mine/Points_Record';
-import Wallet_Recharge from './components/mine/Wallet_Recharge';
-import My_Wallet from './components/mine/My_Wallet'
-import Settings from './components/mine/Settings';
-import { AuthProvider } from './components/AuthProvider';
+import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from './components/ProtectedRoute';
-import Transfer from './components/mine/Transfer';
-import Investments from './components/mine/Investments';
-import BillingDetails from './components/mine/BillingDetails';
-import OnlineService from './components/mine/OnlineService';
+import { IoChevronBackSharp } from "react-icons/io5";
+import { AuthProvider } from './components/AuthProvider';
+
+// Lazy loaded pages
+const Home = lazy(() => import('./pages/Home'));
+const Invest = lazy(() => import('./pages/Invest'));
+const Contract = lazy(() => import('./pages/Contract'));
+const Vip = lazy(() => import('./pages/Vip'));
+const Mine = lazy(() => import('./pages/Mine'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+
+// Lazy loaded Mine section
+const Withdraw = lazy(() => import('./components/mine/Withdraw'));
+const Faq = lazy(() => import('./components/mine/Faq'));
+const Auth_Center = lazy(() => import('./components/mine/Auth_Center'));
+const Member_Center = lazy(() => import('./components/mine/Member_Center'));
+const My_Messages = lazy(() => import('./components/mine/My_Messages'));
+const My_Team = lazy(() => import('./components/mine/My_Team'));
+const My_Rewards = lazy(() => import('./components/mine/My_Rewards'));
+const Points_Record = lazy(() => import('./components/mine/Points_Record'));
+const Wallet_Recharge = lazy(() => import('./components/mine/Wallet_Recharge'));
+const My_Wallet = lazy(() => import('./components/mine/My_Wallet'));
+const Settings = lazy(() => import('./components/mine/Settings'));
+const Transfer = lazy(() => import('./components/mine/Transfer'));
+const Investments = lazy(() => import('./components/mine/Investments'));
+const BillingDetails = lazy(() => import('./components/mine/BillingDetails'));
+const OnlineService = lazy(() => import('./components/mine/OnlineService'));
 
 const AppContent = () => {
   const location = useLocation();
@@ -41,150 +47,36 @@ const AppContent = () => {
     <>
       {loading && <Loader />}
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/investments" element={<Invest />} />
-        <Route path="/contract" element={<Contract />} />
-        <Route path="/vip" element={<Vip />} />
-        <Route path='/me' element={<Mine />} />
-        <Route
-          path="/withdraw"
-          element={
-            <ProtectedRoute>
-              <Withdraw />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/auth-center"
-          element={
-            <ProtectedRoute>
-              <Auth_Center />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/faq"
-          element={
-            <ProtectedRoute>
-              <Faq />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/member-center"
-          element={
-            <ProtectedRoute>
-              <Member_Center />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/messages"
-          element={
-            <ProtectedRoute>
-              <My_Messages />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/team"
-          element={
-            <ProtectedRoute>
-              <My_Team />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/rewards"
-          element={
-            <ProtectedRoute>
-              <My_Rewards />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/settings"
-          element={
-            <ProtectedRoute>
-              <Settings />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/points"
-          element={
-            <ProtectedRoute>
-              <Points_Record />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/me/wallet-recharge"
-          element={
-            <ProtectedRoute>
-              <Wallet_Recharge />
-            </ProtectedRoute>
-          }
-        />
+      <Suspense fallback={<Loader />}>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/investments" element={<Invest />} />
+          <Route path="/contract" element={<Contract />} />
+          <Route path="/vip" element={<Vip />} />
+          <Route path='/me' element={<Mine />} />
 
-        <Route
-          path="/me/withdraw"
-          element={
-            <ProtectedRoute>
-              <Withdraw />
-            </ProtectedRoute>
-          }
-        />
+          <Route path="/withdraw" element={<ProtectedRoute><Withdraw /></ProtectedRoute>} />
+          <Route path="/me/auth-center" element={<ProtectedRoute><Auth_Center /></ProtectedRoute>} />
+          <Route path="/me/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} />
+          <Route path="/me/member-center" element={<ProtectedRoute><Member_Center /></ProtectedRoute>} />
+          <Route path="/me/messages" element={<ProtectedRoute><My_Messages /></ProtectedRoute>} />
+          <Route path="/me/team" element={<ProtectedRoute><My_Team /></ProtectedRoute>} />
+          <Route path="/me/rewards" element={<ProtectedRoute><My_Rewards /></ProtectedRoute>} />
+          <Route path="/me/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+          <Route path="/me/points" element={<ProtectedRoute><Points_Record /></ProtectedRoute>} />
+          <Route path="/me/wallet-recharge" element={<ProtectedRoute><Wallet_Recharge /></ProtectedRoute>} />
+          <Route path="/me/withdraw" element={<ProtectedRoute><Withdraw /></ProtectedRoute>} />
+          <Route path="/me/wallet" element={<ProtectedRoute><My_Wallet /></ProtectedRoute>} />
+          <Route path="/me/transfer" element={<ProtectedRoute><Transfer /></ProtectedRoute>} />
+          <Route path="/me/my-investments" element={<ProtectedRoute><Investments /></ProtectedRoute>} />
+          <Route path="/me/billing-details" element={<ProtectedRoute><BillingDetails /></ProtectedRoute>} />
+          <Route path="/me/my-services" element={<ProtectedRoute><OnlineService /></ProtectedRoute>} />
 
-        <Route
-          path="/me/wallet"
-          element={
-            <ProtectedRoute>
-              <My_Wallet />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/me/transfer"
-          element={
-            <ProtectedRoute>
-              <Transfer />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/me/my-investments"
-          element={
-            <ProtectedRoute>
-              <Investments />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/me/billing-details"
-          element={
-            <ProtectedRoute>
-              <BillingDetails />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/me/my-services"
-          element={
-            <ProtectedRoute>
-              <OnlineService/>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-      </Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };

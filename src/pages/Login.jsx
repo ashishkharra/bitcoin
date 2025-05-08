@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from "../components/AuthProvider";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 const Login = () => {
   const { login } = useAuth();
@@ -11,24 +11,17 @@ const Login = () => {
     username: "",
     password: "",
   })
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const staticUsername = 'Hilkeno';
   const staticPassword = 'Hilk0671'
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   const response = await axios.post("http://192.168.29.5:1000/api/postApi/user-login", form);
-    //   console.log(response.data);
-    //   alert("Login successful!");
-    // } catch (error) {
-    //   console.error(error);
-    //   alert("Login failed. Please try again.");
-    // }
 
     if (form.username === staticUsername && form.password === staticPassword) {
       localStorage.setItem("user", JSON.stringify({ username: form.username }));
-  
+
       login(form.username);
       const origin = location.state?.from?.pathname || '/me';
       navigate(origin);
@@ -38,11 +31,12 @@ const Login = () => {
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
-      
+
       <div className="w-full max-w-md p-8 rounded-lg shadow-lg">
-      <button className="text-xl my-2 cursor-pointer" onClick={() => navigate('/')}>&larr;</button>
-        {/* Heading */}
-        <h1 className="text-2xl font-bold mb-6 text-gray-900">You're welcome</h1>
+        <div className="flex flex-col justify-between text-center w-full">
+          <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22} /></div>
+          <h1 className="text-2xl font-bold mb-6 text-gray-900">You're welcome</h1>
+        </div>
 
         {/* Input Fields */}
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -80,12 +74,24 @@ const Login = () => {
               <path d="M8 8h8" />
             </svg>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               placeholder="Enter password"
               className="bg-transparent focus:outline-none w-full text-sm text-gray-700 placeholder-gray-400"
             />
+            <div onClick={() => setShowPassword(!showPassword)} className="cursor-pointer">
+              {showPassword ? (
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11V7a3 3 0 00-6 0m8 4H7a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2z" />
+                </svg>
+              ) : (
+
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              )}
+            </div>
           </div>
           <button type="submit" className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full font-semibold transition duration-200">
             Confirm

@@ -1,5 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { IoChevronBackSharp } from "react-icons/io5";
 import { useAuth } from '../../components/AuthProvider';
 
 const Settings = () => {
@@ -18,13 +19,21 @@ const Settings = () => {
     navigate('/login');
   };
 
+  const location = useLocation();
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const curr = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (storedUser?.username) {
+      navigate(`/me/${curr}`, { replace: true });
+    }
+  }, []);
+
   return (
     <div className="bg-gray-100 text-black my-20">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-4 bg-white shadow">
-        <button onClick={() => navigate(-1)} className="text-xl">
-          &#8592;
-        </button>
+        <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22} /></div>
         <h2 className="text-lg font-semibold">Settings</h2>
         <div className="w-6" /> {/* Placeholder for alignment */}
       </div>

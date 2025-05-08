@@ -1,6 +1,7 @@
-import react from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../components/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function RewardsPage() {
   const navigate = useNavigate();
@@ -18,10 +19,20 @@ function RewardsPage() {
     },
   ];
 
+  const location = useLocation();
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const curr = location.pathname.split('/').pop();
+
+  useEffect(() => {
+    if (storedUser?.username) {
+      navigate(`/me/${curr}`, { replace: true });
+    }
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white mt-16">
       <div className="flex justify-between">
-        <button className="text-xl my-2 cursor-pointer" onClick={() => navigate('/me')}>&larr;</button>
+        <div className="cursor-pointer" onClick={() => navigate('/me')}><IoChevronBackSharp size={22}/></div>
         <h1 className="text-center text-2xl font-semibold mb-6">My Rewards</h1>
       </div>
 
